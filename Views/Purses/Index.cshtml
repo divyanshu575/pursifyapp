@@ -1,0 +1,109 @@
+﻿@model pursifyapp.Models.PurseTypeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    /* Add or update the following styles to set different background colors for the table */
+
+    tr {
+        background-color: black;
+    }
+
+    th {
+        color: white;
+    }
+
+    td {
+        color: white;
+    }
+</style>
+
+<body style="color: white; background-image: url('back1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+    <h1>Purse database</h1>
+
+    <p>
+        <a asp-action="Create" style="font-family: Roboto; font-weight:450; background: #28a745; padding: 7px 15px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background 0.3s;" class="btn btn-custom text-white">+ Create New</a>
+    </p>
+
+    <form asp-controller="Purses" asp-action="Index" method="get">
+        <p>
+
+            Type: 
+            <select asp-for="PurseType" asp-items="Model.Types">
+                <option value="">All</option>
+            </select>
+
+            <span style="margin-right: 10px;"></span>
+
+            Name:  <input type="text" name="SearchString" />
+
+            <span style="margin-right: 10px;"></span>
+
+            <input type="submit" value="Search" style="font-family: Roboto; font-weight:450; background: #28a745; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;" />
+        </p>
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Purses![0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purses![0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purses![0].Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purses![0].Material)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>model.Purses![0].Comp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>model.Purses![0].Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model =>model.Purses![0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Purses!) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #3498db; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #FF8C00; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
