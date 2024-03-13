@@ -2,6 +2,17 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+<style>
+    body {
+        background: url('@Url.Content("~/back1.png")');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+
+</style>
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {

@@ -22,11 +22,14 @@
 
 <body style="color: white; background-image: url('back1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-    <h1>Purse database</h1>
+    <h1 style="background-color: #f0f0f0; color: black; display: inline-block; padding: 7px; border-radius: 10px;">Purse database</h1>
 
-    <p>
-        <a asp-action="Create" style="font-family: Roboto; font-weight:450; background: #28a745; padding: 7px 15px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background 0.3s;" class="btn btn-custom text-white">+ Create New</a>
-    </p>
+    @if (User.IsInRole("Administrator"))
+    {
+        <p>
+            <a asp-action="Create" style="font-family: Roboto; font-weight:450; background: #28a745; padding: 7px 15px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background 0.3s; margin-top: 10px" class="btn btn-custom text-white">+ Create New</a>
+        </p>
+    }
 
     <form asp-controller="Purses" asp-action="Index" method="get">
         <p>
@@ -98,9 +101,17 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #3498db; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #FF8C00; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Delete</a>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #3498db; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Edit</a>
+                        }
+                
+                            <a asp-action="Details" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #FF8C00; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Details</a>
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id" style="font-family: Roboto; font-weight:450; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Delete</a>
+                        }
             </td>
         </tr>
 }
