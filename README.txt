@@ -1,7 +1,7 @@
 Web Application Security - CYB206
 Group Name:Gamma
 Lokesh Donga
-GopiKrishna Thottathil
+GopiKrishnan Thottathil
 Divyanshu Sharma
 
 2024-01-15 1600 hrs
