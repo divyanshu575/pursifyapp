@@ -154,3 +154,30 @@ Password@2023
 
 // Took multiple attempts.
 
+2024-03-14 21:40
+
+Divyanshu
+
+- pushed to azure // was very tricky, referance: https://www.youtube.com/watch?v=_t-l_loRRqY&t=2s
+
+Link: pursifyapp.azurewebsites.net
+
+Login (Admin): Can Create, Edit, view Details, and Delete
+
+test@test.com
+Password@2024
+
+1 User added: Can register as another user as well, users can only view the table and details.
+
+test2@test.com
+Password@2023
+
+
+
+Important:
+
+servername: purseserver
+purseserver.database.windows.net
+
+server admin login: pursemaster
+password: Pursepassword01
